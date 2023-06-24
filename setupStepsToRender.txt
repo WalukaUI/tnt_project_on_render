@@ -1,0 +1,14 @@
+https://www.youtube.com/watch?v=QJ4BcTQlKC0&t=939s
+
+1 edit production env in database.yml
+2 edit web concurrency in puma.rb file
+  uncomment line 33 => workers ENV.fetch("WEB_CONCURRENCY") { 4 } 
+                40 => preload_app!
+3 edit production.rb line 24 
+   orginal line = config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+   changed to render = config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV["RENDER"].present?
+4 create file in bin folder
+   file name render-build.sh
+5 make that file executable
+  run in commnadline => chmod a+x bin/render-build.sh
+6 create render.ymal file in root 
