@@ -24,7 +24,6 @@ class EmployeesController < ApplicationController
 
     def update
       employee = Employee.find(params[:id])
-      Mai
       employee.update!(employee_params)
       render json: employee.to_json(except: [:created_at, :updated_at])
     end
